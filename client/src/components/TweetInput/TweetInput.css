@@ -1,0 +1,47 @@
+.tweet-input-container {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.tweet-input {
+    width: 100%;
+    resize: none;
+    font-size: 20px;
+    overflow-y: hidden;
+    text-align: justify;
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+}
+
+.tweet-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: end;
+}
+
+.horizontal-line {
+    width: 100%;
+}
+
+.tweet-input:focus {
+    border: none;
+}
+
+.post-button {
+    border-radius: 20px;
+    border: 0;
+    height: 30px;
+    background-color: rgb(29, 155, 240);
+    font-weight: 700;
+    color: white;
+    width: 60px;
+    display: absolute;
+    top: 0;
+}
