@@ -1,7 +1,6 @@
 const express = require("express");
 const { signup, signin } = require("../controllers/user");
 const { signupValidate } = require("../middlewares/user");
-
 const router = express.Router();
 
 router.post("/signin", signin);

@@ -1,10 +1,9 @@
-import React, { useState, useRef } from 'react';
-import axios from 'axios';
-import './TweetInput.css';
+import React, { useRef } from "react";
+import axios from "axios";
+import "./TweetInput.css";
 
-const TweetInput = () => {
+const TweetInput = ({ refetchTweets }) => {
   const tweetInputRef = useRef(null);
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = () => {
     autoResize(tweetInputRef.current);
@@ -12,25 +11,28 @@ const TweetInput = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem("token");
 
     const tweetInputData = {
       tweet: tweetInputRef.current.value,
     };
 
-    const header =  {
+    const header = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     try {
-      const response = await axios.post('http://localhost:3000/tweet/', tweetInputData, header);
-
-      if (!response.data.success) {
-        setErrorMessage(response.data.data);
+      const response = await axios.post(
+        "http://localhost:4000/tweet/",
+        tweetInputData,
+        header
+      );
+      if (response) {
+        tweetInputRef.current.value = null;
+        refetchTweets();
       }
     } catch (error) {
       console.log(error);
@@ -38,8 +40,8 @@ const TweetInput = () => {
   };
 
   const autoResize = (textarea) => {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
   };
 
   return (

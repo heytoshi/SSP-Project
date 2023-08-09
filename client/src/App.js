@@ -1,16 +1,10 @@
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
-import React, {useEffect} from "react";
+import React from "react";
 
 const App = () => {
-
-  // useEffect(() => {
-  //   if(!localStorage.getItem('token')) {
-  //     navigate('/')
-  //   }
-  // },[navigate])
 
   return (
     <Router>

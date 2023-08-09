@@ -11,11 +11,9 @@ const signin = async (req, res) => {
   const checkPassword = await bcrypt.compare(password, user.password);
   if (!checkPassword) throw new Error("Invalid password");
 
-  const token = jwt.sign(
-    { username: user.username },
-    String(process.env.JWT_SECRET_KEY),
-    { expiresIn: "24h" }
-  );
+  const token = jwt.sign({ username: user.username }, process.env.SECRET, {
+    expiresIn: "24h",
+  });
 
   const data = {
     username: user.username,
@@ -40,5 +38,6 @@ const signup = async (req, res) => {
 
   res.status(200).json({ success: true, data: 1 });
 };
+
 
 module.exports = { signin, signup };

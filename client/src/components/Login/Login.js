@@ -22,8 +22,8 @@ const Login = () => {
         loginData
       );
       if (response.data.success) {
-        localStorage.setItem("username", response.data.data.username);
-        localStorage.setItem("token", response.data.data.token);
+        sessionStorage.setItem("username", response.data.data.username);
+        sessionStorage.setItem("token", response.data.data.token);
         navigate("/home");
       }
     } catch (error) {
