@@ -1,7 +1,7 @@
 import React from "react";
 import "./Tweet.css";
 
-const Tweet = (props) => {
+const Tweet = ({username, tweet}) => {
   return (
     <div className="tweet-container">
       <img
@@ -10,8 +10,8 @@ const Tweet = (props) => {
         alt="User Profile"
       />
       <div className="tweet-section">
-        <p className="tweet-username">{props.username}</p>
-        <p className="tweet-content">{props.tweet}</p>
+        <p className="tweet-username">{username}</p>
+        <p className="tweet-content">{tweet}</p>
       </div>
     </div>
   );

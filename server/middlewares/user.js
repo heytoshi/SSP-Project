@@ -6,8 +6,8 @@ const signupValidate = async (req, res, next) => {
 
   if (!username || !password)
     throw new Error("Username and password are required");
-  if (password.length < 6)
-    throw new Error("Password should be at least 6 characters long");
+  if (password.length < 8)
+    throw new Error("Password should be at least 8 characters long");
   const user = await User.findOne({ username });
   if (user) throw new Error("Not a unique username");
 

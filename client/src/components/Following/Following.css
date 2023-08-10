@@ -1,0 +1,27 @@
+.following-container {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.following-section {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.following-button {
+    border-radius: 20px;
+    border: 0;
+    height: 30px;
+    background-color: rgb(126, 34, 34);
+    font-weight: 700;
+    color: white;
+    width: 100px;
+}

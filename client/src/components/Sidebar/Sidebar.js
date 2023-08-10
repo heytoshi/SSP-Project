@@ -1,24 +1,22 @@
 import React from 'react';
-import './Sidebar.css'
+import { Link } from 'react-router-dom'; // Import the Link component
+import './Sidebar.css';
 
 const Sidebar = () => {
   const username = localStorage.getItem('username');
   return (
     <div className="sidebar">
       <ul>
-        <li>Home</li>
-        <li>Explore</li>
-        <li>Notifications</li>
-        <li>Messages</li>
+        <Link className='link-sidebar' to="/home">Home</Link>
       </ul>
-      <div className="username-container">
+      <Link to={`/${username}`} className="username-container">
         <img
           className="user-image"
           src="https://nailsbyjudy.gelmoment.com/static/default_theme/img/icons/icon-no-profile-pic.png"
           alt="User Profile"
         />
-        <p id="username">@{username}</p>
-      </div>
+        <p className='link-sidebar' id="username">@{username}</p>
+      </Link>
     </div>
   );
 };

@@ -22,7 +22,7 @@ const follow = async (req, res) => {
 
 const unfollow = async (req, res) => {
   const username = req.body.token_data.username;
-  const unfollowUsername = req.body.username;
+  const unfollowUsername = req.params.username;
 
   const followers = await User.updateOne(
     { username: unfollowUsername },

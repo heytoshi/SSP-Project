@@ -1,0 +1,26 @@
+.tweet-main-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+
+.tweet-main-content::-webkit-scrollbar {
+    width: 5px;
+    background-color: #555; /* Color of the thumb on hover */
+
+}
+
+.tweet-main-content::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px; 
+}
+
+
+.tweet-main-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555; 
+}
+
+
+.tweet-main-content::-webkit-scrollbar-track {
+    background-color: #f2f2f2; 
+}

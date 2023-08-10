@@ -7,6 +7,7 @@ const user = require('./routes/user');
 const tweet = require('./routes/tweet');
 const follower = require('./routes/follower');
 const dotenv = require('dotenv');
+const searchQuery = require('./middlewares/search')
 
 dotenv.config();
 app.use(cors());
@@ -28,6 +29,20 @@ mongoose
 app.use('/tweet', tweet);
 app.use('/user', user);
 app.use('/follower', follower);
+
+app.get('/search', async (req, res) => {
+  const { query } = req.query;
+  try {
+    if (typeof query === 'string') {
+      const searchResults = await searchQuery.search(query);
+      res.json(searchResults);
+    } else {
+      res.status(400).json({ error: 'Invalid search query.' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Error searching for data.' });
+  }
+});
 
 const errorNonHandler = (req, res, next) => {
   const error = new Error("Not Found");
