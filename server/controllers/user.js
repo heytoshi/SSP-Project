@@ -39,5 +39,36 @@ const signup = async (req, res) => {
   res.status(200).json({ success: true, data: 1 });
 };
 
+const search = async (req, res) => {
+  const query = req.query.query;
+  const username = req.body.token_data.username;
 
-module.exports = { signin, signup };
+  try {
+    if (typeof query === "string") {
+      const users = await User.aggregate([
+        { $match: { username: { $regex: query, $options: "i" } } },
+        {
+          $addFields: {
+            following: {
+              $cond: {
+                if: {
+                  $in: [username, "$followers.username"],
+                },
+                then: 1,
+                else: 0,
+              },
+            },
+          },
+        },
+        { $project: { _id: 0, username: 1, following: 1 } },
+      ]);
+      res.status(200).json({ success: true, data: users });
+    } else {
+      throw new Error("Invalid search query");
+    }
+  } catch (error) {
+    throw new Error("Error searching for data.");
+  }
+};
+
+module.exports = { signin, signup, search };
