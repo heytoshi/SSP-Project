@@ -21,20 +21,20 @@ const Sidebar = () => {
           <AiFillHome />
           Home
         </Link>
-        <Link className="link-sidebar" to={`/${username}`}>
+        {/* <Link className="link-sidebar" to={`/${username}`}>
           <AiOutlineUser />
           Profile
-        </Link>
+        </Link> */}
       </div>
       <div className="username-container">
-        <div className="username-info">
+        <Link to={`/${username}`} className="username-info">
           <img
             className="user-image"
             src="https://nailsbyjudy.gelmoment.com/static/default_theme/img/icons/icon-no-profile-pic.png"
             alt="User Profile"
           />
-          <p id="username">@{username}</p>
-        </div>
+          <p className="username-info-link" id="username">@{username}</p>
+        </Link>
         <button className="sign-out" onClick={handleSignOut}>
           Sign out
         </button>
