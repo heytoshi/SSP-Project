@@ -1,0 +1,53 @@
+.search-input {
+    height: 50px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: rgb(191, 190, 190);
+}
+
+.search-result-item {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(29, 29, 29);
+}
+
+.search-unfollow-button {
+    border-radius: 20px;
+    border: 0;
+    height: 30px;
+    background-color: rgb(126, 34, 34);
+    font-weight: 700;
+    color: white;
+    width: 100px;
+}
+
+.search-follow-button {
+    border-radius: 20px;
+    border: 0;
+    height: 30px;
+    background-color:  rgb(29, 155, 240);
+    font-weight: 700;
+    color: white;
+    width: 100px;
+}
+
+.search-horizontal-line {
+    margin: 0;
+}
+
+.search-result-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

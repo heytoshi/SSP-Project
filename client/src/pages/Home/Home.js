@@ -28,19 +28,17 @@ const Home = () => {
         header
       );
       const data = response.data.data;
+      console.log(data)
       if (data.length === 0) {
         setHasMore(false);
         return;
       }
-      if (page === 1) {
-        setTweets(data);
-      } else {
-        setTweets((prevTweets) => [...prevTweets, ...data]);
-      }
+      setTweets((prevTweets) => [...prevTweets, ...data]);
     } catch (error) {}
   };
+  
   useEffect(() => {
-    fetchTweets();
+    fetchTweets(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
@@ -51,8 +49,9 @@ const Home = () => {
     }
   }, []);
 
-  const refetchTweets = () => {
-    fetchTweets();
+  const refetchTweets = (username, tweet) => {
+    const newTweet = { username: username, tweet: tweet};
+    setTweets((prevList) => [newTweet, ...prevList]);
   };
 
 

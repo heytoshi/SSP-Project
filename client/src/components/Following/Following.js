@@ -1,8 +1,8 @@
 import React from "react";
 import "./Following.css";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 
-const Following = ({ username }) => {
+const Following = ({ username, unfollow, updateSearch }) => {
   const handleUnfollow = async () => {
     try {
       const token = sessionStorage.getItem("token");
@@ -14,7 +14,14 @@ const Following = ({ username }) => {
         },
       };
 
-      await axios.delete(`http://localhost:4000/follower/${username}`, header);
+      const result = await axios.delete(
+        `http://localhost:4000/follower/${username}`,
+        header
+      );
+      if (result.data.success) {
+        unfollow(username);
+        updateSearch(true);
+      }
     } catch (error) {
       console.error("Error unfollowing:", error);
     }

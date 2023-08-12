@@ -12,6 +12,7 @@ const TweetInput = ({ refetchTweets }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const token = sessionStorage.getItem("token");
+    const username = sessionStorage.getItem("username");
 
     const tweetInputData = {
       tweet: tweetInputRef.current.value,
@@ -30,9 +31,9 @@ const TweetInput = ({ refetchTweets }) => {
         tweetInputData,
         header
       );
-      if (response) {
+      if (response.data.success) {
+        refetchTweets(username, tweetInputRef.current.value);
         tweetInputRef.current.value = null;
-        refetchTweets();
       }
     } catch (error) {
       console.log(error);
