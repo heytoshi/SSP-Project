@@ -28,7 +28,7 @@ const Home = () => {
         header
       );
       const data = response.data.data;
-      console.log(data)
+
       if (data.length === 0) {
         setHasMore(false);
         return;
