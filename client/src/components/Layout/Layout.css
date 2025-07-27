@@ -12,3 +12,23 @@
     border-right: 1px solid white;
     height: 100vh;
 }
+
+@media (max-width: 768px) {
+  .right-bar {
+    display: none;
+  }
+
+  /* Optional: make main-content take full width on mobile */
+  .main-content {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Optional: adjust layout-container if needed */
+  .layout-container {
+     width: 100%;
+     height: auto;
+    flex-direction: column;
+  }
+}
